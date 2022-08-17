@@ -5,6 +5,7 @@ import sequelize from "./database/database.js";
 import './models/Project.js';
 import './models/Task.js';
 
+
 const port = process.env.PORT || 4000;
 
 app.use(morgan("dev"));
