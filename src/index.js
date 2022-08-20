@@ -6,7 +6,7 @@ import './models/Project.js';
 import './models/Task.js';
 
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 app.use(morgan("dev"));
 app.use(invalidRoute);
