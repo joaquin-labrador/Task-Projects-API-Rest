@@ -3,11 +3,12 @@ import Project from "../models/Project.js";
 const getProjects = async (req, res) => {
   try {
     const projects = await Project.findAll();
-    return res.status(200).send(projects);
+    console.log(projects);
+    return projects.length > 0 ? res.status(200).send(projects) : res.status(404).send("No projects found");
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
-};
+}
 
 const createProject = async (req, res) => {
   try {
@@ -22,29 +23,22 @@ const createProject = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
-};
+}
 
 const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, priority, description } = req.body;
     const project = await Project.findByPk(id);
     if (!project) {
       return res.status(404).send("Project not found");
     }
-    await project.update({
-      name,
-      priority,
-      description,
-    }, {
-      fields: ["name", "priority", "description"],
-    });
-    project.save();
+    project.set(req.body);
+    await project.save();
     return res.status(200).send(project);
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
-};
+}
 
 const deleteProject = async (req, res) => {
   try {
@@ -71,7 +65,7 @@ const getProjectById = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
-};
+}
 
 export default {
   getProjects,
