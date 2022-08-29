@@ -17,4 +17,4 @@ API for organize Projects and their Tasks - Apply an SQL database
 - [x] `POST /api/v1.0/tasks` should create a new object Task
 - [x] `PUT /api/v1.0/tasks` should update a object Project  
 - [x] `DELETE /api/v1.0/tasks` should delete a object Project from your database
-- [x] `GET /api/v1.0/tasks/:id` hould return an object Project from your database
+- [x] `GET /api/v1.0/tasks/:id` should return an object Project from your database
